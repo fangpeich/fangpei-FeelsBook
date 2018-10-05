@@ -140,7 +140,8 @@ public class AddEmotion extends Activity {
         }
     }
 
-    // addEmotion method is called when used input message, it will set the message to the transfered obj
+    // addEmotion method is called when used input message, it will identify which type of mood the target obj is,
+    // and then change the message attribute of corresponding obj in the mood arraylist
     private void addEmotion(EditText bodyText, String filename, Mood emotion, ArrayList<Mood> moods, Context context ) {
 
         String text ;

@@ -61,6 +61,7 @@ public class HistoryOperation extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_view);
 
+        // get emotion arraylist from file
         emotions =  FileEditor.loadFromFile(HistoryOperation.this,FeelsBook.FILENAME,emotions);
 
 
@@ -76,7 +77,7 @@ public class HistoryOperation extends Activity
         });
 
 
-
+        // set listener for listview component
         emotionList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(final AdapterView<?> adapterView, View view, final int position, long l) {
 
@@ -85,12 +86,13 @@ public class HistoryOperation extends Activity
 
 
 
-
+                // final position used here in order to avoid finding wrong item
                 finalPosition = position;
 
                custom.setPositiveButton("Edit Date", new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        //instantiate a calendar obj, and set the time of the obj to target emotion's time
                         cal = Calendar.getInstance();
                         Date date = emotions.get(finalPosition).getDate();
 
@@ -105,6 +107,9 @@ public class HistoryOperation extends Activity
                         final Mood emotion = emotions.get(finalPosition);
 
 
+
+
+                         //using DatePicker + TimePicker to avoid user input some not correct values
 
                         new TimePickerDialog(HistoryOperation.this,
                                 AlertDialog.THEME_HOLO_LIGHT, new TimePickerDialog.OnTimeSetListener() {
@@ -141,7 +146,7 @@ public class HistoryOperation extends Activity
                     }
                 });
 
-
+                // set NegativeButton , if used click it, will start edit past message
                 custom.setNegativeButton("Edit Message", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogInterface, int i) {
 

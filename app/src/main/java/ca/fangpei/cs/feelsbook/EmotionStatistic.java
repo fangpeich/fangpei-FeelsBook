@@ -21,6 +21,9 @@ import ca.fangpei.cs.feelsbook.Emotions.Surprise;
 * */
 
 public class EmotionStatistic extends Activity {
+    /*
+    * state 6 emotion objs and 6 corresponding buttons
+    * */
     private Love love;
     private Joy joy;
     private Surprise surprise;
@@ -41,6 +44,7 @@ public class EmotionStatistic extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.statistic_count);
 
+        // instantiate 6 kind of emotions
         joy = new Joy(EmotionStatistic.this);
         love = new Love(EmotionStatistic.this);
         surprise = new Surprise(EmotionStatistic.this);
@@ -48,6 +52,7 @@ public class EmotionStatistic extends Activity {
         sadness = new Sadness(EmotionStatistic.this);
         fear = new Fear(EmotionStatistic.this);
 
+        //  binding button objs to corresponding buttons
         joy_textView = (TextView)findViewById(R.id.joy_count);
         love_textView = (TextView)findViewById(R.id.love_count);
         anger_textView = (TextView)findViewById(R.id.anger_count);
@@ -90,7 +95,7 @@ public class EmotionStatistic extends Activity {
                 fear_textView.setText(get_count_inf(fear.getName(), count));
 
     }
-
+    // formate output string
     private String get_count_inf (String emotion_name, int count)
     {
         return "You felt "+emotion_name+ " "+ String.valueOf(count) + " " + "times";

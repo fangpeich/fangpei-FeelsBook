@@ -16,8 +16,18 @@ import java.util.Date;
 import ca.fangpei.cs.feelsbook.Emotions.Mood;
 
 /**
+ * Original Author: Mitch Tabian
+ * Program name: ListAdapter
+ * URL: 
+ * Latest commit on May 16, 2016
+ *
+ *
  * PersonalListAdaper method is used to implement customized listView, so the date and emotion
  * will always be displayed
+ *
+ *
+ *
+ *
  */
 
 public class PersonListAdapter extends ArrayAdapter<Mood> {
