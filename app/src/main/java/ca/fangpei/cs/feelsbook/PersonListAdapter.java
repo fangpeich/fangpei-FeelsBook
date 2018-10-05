@@ -18,8 +18,8 @@ import ca.fangpei.cs.feelsbook.Emotions.Mood;
 /**
  * Original Author: Mitch Tabian
  * Latest commit  on May 16, 2016
- * retrieved on 
- *
+ * retrieved on Sep 30, 2018
+ * Authorized using by the original author
  *
  *
  * PersonalListAdaper method is used to implement customized listView, so the date and emotion
