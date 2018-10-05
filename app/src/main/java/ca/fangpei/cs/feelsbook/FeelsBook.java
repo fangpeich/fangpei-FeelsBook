@@ -1,0 +1,227 @@
+package ca.fangpei.cs.feelsbook;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Date;
+
+import ca.fangpei.cs.feelsbook.Emotions.Anger;
+import ca.fangpei.cs.feelsbook.Emotions.Fear;
+import ca.fangpei.cs.feelsbook.Emotions.Joy;
+import ca.fangpei.cs.feelsbook.Emotions.Love;
+import ca.fangpei.cs.feelsbook.Emotions.Mood;
+import ca.fangpei.cs.feelsbook.Emotions.Sadness;
+import ca.fangpei.cs.feelsbook.Emotions.Surprise;
+
+public class FeelsBook extends Activity {
+
+    public final static String FILENAME = "file.sav";
+    //private ArrayList<Mood> emotions = new ArrayList<Mood>();
+    private Love love;
+    private Joy joy;
+    private Surprise surprise;
+    private Anger anger;
+    private Sadness sadness;
+    private Fear fear;
+
+
+
+
+    /**
+     * Called when the activity is first created.
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        joy = new Joy(FeelsBook.this);
+        love = new Love(FeelsBook.this);
+        surprise = new Surprise(FeelsBook.this);
+        anger = new Anger(FeelsBook.this);
+        sadness = new Sadness(FeelsBook.this);
+        fear = new Fear(FeelsBook.this);
+
+
+
+
+
+        Button joy_button = (Button) findViewById(R.id.joy);
+
+        joy_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+
+                joy.addCount(FeelsBook.this);
+                joy.setDate(new Date());
+
+                //emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+                //emotions.add(joy);
+                //FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+
+
+
+
+                Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("ca.ualberta.emotion.key", joy);
+
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+
+        Button surprise_button = (Button) findViewById(R.id.surprise);
+
+        surprise_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                surprise.addCount(FeelsBook.this);
+                surprise.setDate(new Date());
+                //emotions = FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+                //emotions.add(surprise);
+                //FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+
+
+                Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("ca.ualberta.emotion.key", surprise);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+
+
+        Button love_button = (Button) findViewById(R.id.love);
+
+        love_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                love.addCount(FeelsBook.this);
+                love.setDate(new Date());
+               // emotions = FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+                //emotions.add(love);
+               // FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+
+
+                Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("ca.ualberta.emotion.key", love);
+
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+
+
+        Button anger_button  = (Button) findViewById(R.id.anger);
+
+        anger_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                anger.addCount(FeelsBook.this);
+                anger.setDate(new Date());
+                //emotions = FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+               // emotions.add(anger);
+                //FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+
+
+                Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("ca.ualberta.emotion.key", anger);
+
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+
+
+        Button sadness_button = (Button) findViewById(R.id.sadness);
+
+        sadness_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                sadness.addCount(FeelsBook.this);
+                sadness.setDate(new Date());
+               // emotions = FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+               // emotions.add(sadness);
+                //FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+
+
+                Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("ca.ualberta.emotion.key", sadness);
+
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+
+
+        Button fear_button = (Button) findViewById(R.id.fear);
+
+        fear_button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                fear.addCount(FeelsBook.this);
+                fear.setDate(new Date());
+                //emotions = FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+               // emotions.add(fear);
+               // FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+               // emotions.add(fear);
+               // FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+
+                Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("ca.ualberta.emotion.key", fear);
+                //intent.setClass(FeelsBook.this, AddEmotion.class)
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        //新建的xml文件
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public void view_history (MenuItem menu)
+    {
+       // Toast.makeText(this, "Edit Students",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(FeelsBook.this,HistoryOperation.class);
+        //Log.i("cfp","111");
+        startActivity(intent);
+    }
+
+
+    public void view_statistic (MenuItem menu)
+    {
+
+        Intent intent = new Intent(FeelsBook.this,EmotionStatistic.class);
+        //Log.i("cfp","111");
+        startActivity(intent);
+    }
+
+}

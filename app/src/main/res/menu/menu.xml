@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:context="com.example.administrator.testmenu2.MainActivity">
+
+
+    <item
+        android:id="@+id/history_view"
+        android:title="@string/view_history"
+        android:onClick="view_history"
+        />
+    <item
+        android:id="@+id/statistic_view"
+        android:title="Emotion Statistic"
+        android:onClick="view_statistic"
+        />
+</menu>
