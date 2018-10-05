@@ -28,6 +28,11 @@ import ca.fangpei.cs.feelsbook.Emotions.Mood;
 import ca.fangpei.cs.feelsbook.Emotions.Sadness;
 import ca.fangpei.cs.feelsbook.Emotions.Surprise;
 
+/*
+* Class HistoryOperation is responsible for operations related to past emotions, including
+* edit message, date and delete a record
+* */
+
 public class HistoryOperation extends Activity
     /*
     view history
@@ -58,7 +63,7 @@ public class HistoryOperation extends Activity
 
         emotions =  FileEditor.loadFromFile(HistoryOperation.this,FeelsBook.FILENAME,emotions);
 
-        //Button clearButton = (Button) findViewById(R.id.clear);
+
         Button backButton = (Button) findViewById(R.id.back);
         emotionList = (ListView) findViewById(R.id.oldEmotionList);
 
@@ -90,7 +95,7 @@ public class HistoryOperation extends Activity
                         Date date = emotions.get(finalPosition).getDate();
 
                         cal.setTime(date);
-                        //Log.i("cfp", cal.getTime().toString());
+
                         year = cal.get(Calendar.YEAR);
                         month =cal.get(Calendar.MONTH);
                         day = cal.get(Calendar.DAY_OF_MONTH);
@@ -99,7 +104,6 @@ public class HistoryOperation extends Activity
                         // emotion used to remember which item are being edited
                         final Mood emotion = emotions.get(finalPosition);
 
-                        //Log.i("cfp", String.valueOf(year));
 
 
                         new TimePickerDialog(HistoryOperation.this,
@@ -110,7 +114,7 @@ public class HistoryOperation extends Activity
                                 year = cal.get(Calendar.YEAR);
                                 month =cal.get(Calendar.MONTH);
                                 day = cal.get(Calendar.DAY_OF_MONTH);
-                                setTime(position,year,month,day,i,i1,cal,emotions, adapter);
+                                setTime(finalPosition,year,month,day,i,i1,cal,emotions, adapter);
                                 FileEditor.saveInFile(HistoryOperation.this,FeelsBook.FILENAME,emotions);
                             }
                         }   ,hour
@@ -125,8 +129,6 @@ public class HistoryOperation extends Activity
 
                                 setDate(finalPosition,i,i1,i2,cal,emotions,adapter);
                                 FileEditor.saveInFile(HistoryOperation.this,FeelsBook.FILENAME,emotions);
-
-                                //get the postion of the object which are sorted in the list
 
                                 finalPosition = emotions.indexOf(emotion);
                             }
@@ -144,7 +146,6 @@ public class HistoryOperation extends Activity
                             public void onClick(DialogInterface dialogInterface, int i) {
 
                                 AlertDialog.Builder msg_editor = new AlertDialog.Builder(HistoryOperation.this);
-                                //LayoutInflater inflater = FeelsBookActivity.this.getLayoutInflater();
                                 final EditText user_input = new EditText(HistoryOperation.this);
                                 msg_editor.setView(user_input);
                                 msg_editor.setCancelable(true);
@@ -160,7 +161,6 @@ public class HistoryOperation extends Activity
                                         adapter.notifyDataSetChanged();
                                         FileEditor.saveInFile(HistoryOperation.this, FeelsBook.FILENAME, emotions);
 
-                                        //notifyAll();
                                     }
 
                                 });
@@ -176,7 +176,6 @@ public class HistoryOperation extends Activity
                         deleteEmotion(finalPosition,emotions,HistoryOperation.this);
 
                         adapter.notifyDataSetChanged();
-                        //notifyAll();
                     }
                 });
 
@@ -188,7 +187,10 @@ public class HistoryOperation extends Activity
 
 
     }
-
+/*
+* method onStart will be executed to implement data update. Each time the emotion list changes,
+* it will post the update on display
+* */
     @Override
     protected void onStart() {
         // calling super class' onStart method
@@ -201,7 +203,10 @@ public class HistoryOperation extends Activity
         };
         emotionList.setAdapter(adapter);
     }
-
+/*
+* editmsg method simple implement past message editing by using the clicked position in the listview to
+* locate a corresponding obj
+* */
     private void editMsg(String msg, int position, ArrayList<Mood> moods )
     {
 
@@ -211,6 +216,11 @@ public class HistoryOperation extends Activity
             e.printStackTrace();
         }
     }
+
+    /*
+    * delteEmotion method delete a past record when it is called
+    *
+    * */
 
     private void deleteEmotion (int position, ArrayList<Mood> moods, Context context)
     {
@@ -252,7 +262,9 @@ public class HistoryOperation extends Activity
         moods.remove(mood);
         FileEditor.saveInFile(HistoryOperation.this,FeelsBook.FILENAME,moods);
     }
-
+/*
+* setTime method will set time based on the result of timepicker dialog
+* */
     private void setTime(int position, int year, int month, int day, int hour, int min, Calendar calendar, ArrayList<Mood> moods, PersonListAdapter adapter)
     {
         calendar.setTime(moods.get(position).getDate());
@@ -268,6 +280,10 @@ public class HistoryOperation extends Activity
 
         adapter.notifyDataSetChanged();
     }
+
+    /*
+     * setTime method will set time based on the result of datepicker dialog
+     * */
     private void setDate(int position, int year, int month, int day, Calendar calendar, ArrayList<Mood> moods, PersonListAdapter adapter )
     {
 

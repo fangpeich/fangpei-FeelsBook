@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 public class Fear extends Mood  implements Serializable {
     final String id = "FEAR.PREFERENCE_FILE_KEY";
-    private int fear_count;
     //String record;
 
     public Fear(Context context){
@@ -15,9 +14,9 @@ public class Fear extends Mood  implements Serializable {
         this.setEmotion_id(6);
         SharedPreferences srp = context.getSharedPreferences(id,0);
 
-        fear_count = srp.getInt("fear_count", -1);
+        this.setCount(srp.getInt("fear_count", -1) );
 
-        if (fear_count == -1)
+        if (this.getCount() == -1)
         {
 
             SharedPreferences.Editor editor = srp.edit();
@@ -26,6 +25,7 @@ public class Fear extends Mood  implements Serializable {
         }
         else{}
     }
+
 
     public static void clear(Context context, String id)
     {
@@ -39,10 +39,10 @@ public class Fear extends Mood  implements Serializable {
     {
 
         SharedPreferences srp = context.getSharedPreferences(id,0);
-        fear_count = srp.getInt("fear_count",0);
-        fear_count++;
+        this.setCount(srp.getInt("fear_count",0));
+        this.setCount(this.getCount()+1);
         SharedPreferences.Editor editor = srp.edit();
-        editor.putInt("fear_count", fear_count);
+        editor.putInt("fear_count", this.getCount());
         editor.apply();
     }
 
@@ -50,19 +50,21 @@ public class Fear extends Mood  implements Serializable {
     {
 
         SharedPreferences srp = context.getSharedPreferences(id,0);
-        fear_count = srp.getInt("fear_count",0);
-        fear_count--;
+        this.setCount(srp.getInt("fear_count",0));
+        this.setCount(this.getCount()-1);
         SharedPreferences.Editor editor = srp.edit();
-        editor.putInt("fear_count", fear_count);
+        editor.putInt("fear_count", this.getCount());
         editor.apply();
     }
+
 
     public int getFear_count(Context context, String id)
     {
         SharedPreferences srp = context.getSharedPreferences(id,0);
-        fear_count = srp.getInt("fear_count",0);
-        return fear_count;
+        setCount(srp.getInt("fear_count",0));
+        return getCount();
     }
+
 
 
 }

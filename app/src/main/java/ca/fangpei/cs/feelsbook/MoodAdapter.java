@@ -10,6 +10,10 @@ import java.lang.reflect.Type;
 
 import ca.fangpei.cs.feelsbook.Emotions.Mood;
 
+/*
+* MoodAdapter method is a assit method for helping deserilizing ArrayList<Mood> obj
+* */
+
 public class MoodAdapter implements  JsonDeserializer<Mood>
 {
 

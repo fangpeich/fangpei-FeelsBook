@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 public class Anger extends Mood  implements Serializable {
     final String id = "ANGER.PREFERENCE_FILE_KEY";
-    private int anger_count;
     //String record;
 
     public Anger(Context context){
@@ -15,9 +14,9 @@ public class Anger extends Mood  implements Serializable {
         this.setEmotion_id(4);
         SharedPreferences srp = context.getSharedPreferences(id,0);
 
-        anger_count = srp.getInt("anger_count", -1);
+        this.setCount(srp.getInt("anger_count", -1) );
 
-        if (anger_count == -1)
+        if (this.getCount() == -1)
         {
 
             SharedPreferences.Editor editor = srp.edit();
@@ -40,10 +39,10 @@ public class Anger extends Mood  implements Serializable {
     {
 
         SharedPreferences srp = context.getSharedPreferences(id,0);
-        anger_count = srp.getInt("anger_count",0);
-        anger_count++;
+        this.setCount(srp.getInt("anger_count",0));
+        this.setCount(this.getCount()+1);
         SharedPreferences.Editor editor = srp.edit();
-        editor.putInt("anger_count", anger_count);
+        editor.putInt("anger_count", this.getCount());
         editor.apply();
     }
 
@@ -51,10 +50,10 @@ public class Anger extends Mood  implements Serializable {
     {
 
         SharedPreferences srp = context.getSharedPreferences(id,0);
-        anger_count = srp.getInt("anger_count",0);
-        anger_count--;
+        this.setCount(srp.getInt("anger_count",0));
+        this.setCount(this.getCount()-1);
         SharedPreferences.Editor editor = srp.edit();
-        editor.putInt("anger_count", anger_count);
+        editor.putInt("anger_count", this.getCount());
         editor.apply();
     }
 
@@ -62,8 +61,8 @@ public class Anger extends Mood  implements Serializable {
     public int getAnger_count(Context context, String id)
     {
         SharedPreferences srp = context.getSharedPreferences(id,0);
-        anger_count = srp.getInt("anger_count",0);
-        return anger_count;
+        setCount(srp.getInt("anger_count",0));
+        return getCount();
     }
 
 

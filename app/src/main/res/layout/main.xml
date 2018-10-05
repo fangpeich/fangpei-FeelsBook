@@ -27,7 +27,7 @@
             android:layout_height="80dp"
             android:layout_marginBottom="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/surprise_bg"/>
+            android:background="@drawable/anger_bg"/>
            <!-- android:text="Surprise" />-->
 
         <Button
@@ -53,7 +53,7 @@
         android:layout_height="80dp"
         android:layout_marginBottom="20dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/anger_bg"/>
+        android:background="@drawable/surprise_bg"/>
         <!--android:text="Anger" />-->
 
     <Button

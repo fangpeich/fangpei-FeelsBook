@@ -1,4 +1,8 @@
 package ca.fangpei.cs.feelsbook.Emotions;
+/*
+* This is the parent method of all emotions
+*
+* */
 
 import android.support.annotation.NonNull;
 
@@ -14,6 +18,7 @@ public abstract class Mood implements Serializable, Comparable<Mood> {
     private String message;
     private String name;
     private int emotion_id;
+    private int count;
     String record;
 
 
@@ -31,12 +36,9 @@ public abstract class Mood implements Serializable, Comparable<Mood> {
 
     public Date getDate() { return this.date; }
 
-    public String getFormatDate()
-    {
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        return dateFormat.format(this.date);
-    }
+    /*
+    * ToString method output formated string
+    * */
 
     public String toString()
     {
@@ -45,7 +47,6 @@ public abstract class Mood implements Serializable, Comparable<Mood> {
        record =  dateFormat.format(getDate())
                 + " " + getName()+" "+getMessage();
         return record;
-       //return this.date.toString()+"|"+message;
     }
 
 
@@ -66,10 +67,44 @@ public abstract class Mood implements Serializable, Comparable<Mood> {
         this.emotion_id = emotion_id;
     }
 
+    /*
+    * rewrite compareTo metho to compare two Mood obj
+    *
+    * */
+
     @Override
     public int compareTo(@NonNull Mood m) {
 
 
         return (getDate().compareTo(m.getDate()) );
+    }
+/*
+* override equals method in order to get the correct
+* index of a obj
+*
+* */
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (obj == null){
+            return false;
+        }
+        if (obj instanceof Mood)
+        {
+            Mood m = (Mood)obj;
+            if(m.count==count && m.emotion_id==emotion_id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }

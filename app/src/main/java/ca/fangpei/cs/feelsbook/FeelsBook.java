@@ -20,11 +20,15 @@ import ca.fangpei.cs.feelsbook.Emotions.Love;
 import ca.fangpei.cs.feelsbook.Emotions.Mood;
 import ca.fangpei.cs.feelsbook.Emotions.Sadness;
 import ca.fangpei.cs.feelsbook.Emotions.Surprise;
-
+/*
+*
+* This is the MainActivity metho.
+*
+* */
 public class FeelsBook extends Activity {
 
     public final static String FILENAME = "file.sav";
-    //private ArrayList<Mood> emotions = new ArrayList<Mood>();
+    private ArrayList<Mood> emotions = new ArrayList<Mood>();
     private Love love;
     private Joy joy;
     private Surprise surprise;
@@ -48,13 +52,19 @@ public class FeelsBook extends Activity {
         anger = new Anger(FeelsBook.this);
         sadness = new Sadness(FeelsBook.this);
         fear = new Fear(FeelsBook.this);
+        emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
 
-
+/*
+* The rest of code is ued for constructing 6 buttons, each bottuon is corresponding for a emotion/mood
+* When user click button, the code will instanciate a instance of the mood
+*
+*
+*
+* */
 
 
 
         Button joy_button = (Button) findViewById(R.id.joy);
-
         joy_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
@@ -62,9 +72,9 @@ public class FeelsBook extends Activity {
                 joy.addCount(FeelsBook.this);
                 joy.setDate(new Date());
 
-                //emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
-                //emotions.add(joy);
-                //FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+                emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+                emotions.add(joy);
+                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
 
 
 
@@ -86,9 +96,10 @@ public class FeelsBook extends Activity {
 
                 surprise.addCount(FeelsBook.this);
                 surprise.setDate(new Date());
-                //emotions = FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
-                //emotions.add(surprise);
-                //FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+
+                emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+                emotions.add(surprise);
+                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
 
 
                 Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
@@ -108,9 +119,10 @@ public class FeelsBook extends Activity {
 
                 love.addCount(FeelsBook.this);
                 love.setDate(new Date());
-               // emotions = FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
-                //emotions.add(love);
-               // FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+
+                emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+                emotions.add(love);
+                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
 
 
                 Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
@@ -124,16 +136,18 @@ public class FeelsBook extends Activity {
         });
 
 
-        Button anger_button  = (Button) findViewById(R.id.anger);
+        final Button anger_button  = (Button) findViewById(R.id.anger);
 
         anger_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
                 anger.addCount(FeelsBook.this);
+                anger.getCount();
                 anger.setDate(new Date());
-                //emotions = FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
-               // emotions.add(anger);
-                //FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+
+                emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+                emotions.add(anger);
+                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
 
 
                 Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
@@ -154,9 +168,10 @@ public class FeelsBook extends Activity {
 
                 sadness.addCount(FeelsBook.this);
                 sadness.setDate(new Date());
-               // emotions = FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
-               // emotions.add(sadness);
-                //FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+
+                emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+                emotions.add(sadness);
+                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
 
 
                 Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
@@ -177,11 +192,10 @@ public class FeelsBook extends Activity {
 
                 fear.addCount(FeelsBook.this);
                 fear.setDate(new Date());
-                //emotions = FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
-               // emotions.add(fear);
-               // FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
-               // emotions.add(fear);
-               // FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+
+                emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+               emotions.add(fear);
+               FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
 
                 Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
                 Bundle bundle = new Bundle();
@@ -198,7 +212,12 @@ public class FeelsBook extends Activity {
 
 
     }
-
+/*
+* following code constructing a menu(actionbar), which consisted of two parts, one is history,
+* another is the statistic for emotions
+*
+*
+* */
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {

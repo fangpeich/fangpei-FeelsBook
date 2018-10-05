@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 public class Sadness extends Mood  implements Serializable {
     final String id = "SADNESS.PREFERENCE_FILE_KEY";
-    private int sadness_count;
     //String record;
 
     public Sadness(Context context){
@@ -15,9 +14,9 @@ public class Sadness extends Mood  implements Serializable {
         this.setEmotion_id(5);
         SharedPreferences srp = context.getSharedPreferences(id,0);
 
-        sadness_count = srp.getInt("sadness_count", -1);
+        this.setCount(srp.getInt("sadness_count", -1) );
 
-        if (sadness_count == -1)
+        if (this.getCount() == -1)
         {
 
             SharedPreferences.Editor editor = srp.edit();
@@ -26,6 +25,7 @@ public class Sadness extends Mood  implements Serializable {
         }
         else{}
     }
+
 
     public static void clear(Context context, String id)
     {
@@ -37,30 +37,34 @@ public class Sadness extends Mood  implements Serializable {
 
     public void addCount(Context context)
     {
+
         SharedPreferences srp = context.getSharedPreferences(id,0);
-        sadness_count = srp.getInt("sadness_count",0);
-        sadness_count++;
+        this.setCount(srp.getInt("sadness_count",0));
+        this.setCount(this.getCount()+1);
         SharedPreferences.Editor editor = srp.edit();
-        editor.putInt("sadness_count", sadness_count);
+        editor.putInt("sadness_count", this.getCount());
         editor.apply();
     }
 
     public void subCount(Context context)
     {
+
         SharedPreferences srp = context.getSharedPreferences(id,0);
-        sadness_count = srp.getInt("sadness_count",0);
-        sadness_count--;
+        this.setCount(srp.getInt("sadness_count",0));
+        this.setCount(this.getCount()-1);
         SharedPreferences.Editor editor = srp.edit();
-        editor.putInt("sadness_count", sadness_count);
+        editor.putInt("sadness_count", this.getCount());
         editor.apply();
     }
+
 
     public int getSadness_count(Context context, String id)
     {
         SharedPreferences srp = context.getSharedPreferences(id,0);
-        sadness_count = srp.getInt("sadness_count",0);
-        return sadness_count;
+        setCount(srp.getInt("sadness_count",0));
+        return getCount();
     }
+
 
 
 }

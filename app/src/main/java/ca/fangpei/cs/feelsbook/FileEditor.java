@@ -18,9 +18,15 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import ca.fangpei.cs.feelsbook.Emotions.Mood;
-
+/*
+* Class FileEditor is responsible for operations related to load/save data to file.
+*
+* */
 public class FileEditor {
 
+    /*
+    * loadFromFIle method return a mood arraylist by desirializing json data
+    * */
     public static ArrayList<Mood> loadFromFile(Context context, String FILENAME, ArrayList<Mood> moods) {
 
         try {
@@ -49,6 +55,10 @@ public class FileEditor {
         }
         return moods;
     }
+
+    /*
+    * method saveInfile store mood arraylist into file by serializing it
+    * */
 
     public static void saveInFile(Context context, String FILENAME, ArrayList<Mood> moods) {
         try {

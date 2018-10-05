@@ -13,6 +13,13 @@ import ca.fangpei.cs.feelsbook.Emotions.Love;
 import ca.fangpei.cs.feelsbook.Emotions.Sadness;
 import ca.fangpei.cs.feelsbook.Emotions.Surprise;
 
+/*
+* Class EmotionStatistic is responsible for display the count of each mood record
+*
+*
+*
+* */
+
 public class EmotionStatistic extends Activity {
     private Love love;
     private Joy joy;
@@ -48,8 +55,8 @@ public class EmotionStatistic extends Activity {
         fear_textView = (TextView)findViewById(R.id.fear_count);
         sadness_textView = (TextView)findViewById(R.id.sadness_count);
 
+        //when user click back button, simple back to feelsbook
         Button backButton = (Button) findViewById(R.id.static_back);
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +65,7 @@ public class EmotionStatistic extends Activity {
         });
 
 
-
+                // using id to get corresponding count for each mood
                 count = joy.getJoyCount(EmotionStatistic.this,"JOY.PREFERENCE_FILE_KEY");
                 joy_textView.setText(get_count_inf(joy.getName(), count));
 

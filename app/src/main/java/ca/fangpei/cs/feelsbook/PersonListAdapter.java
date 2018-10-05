@@ -16,7 +16,8 @@ import java.util.Date;
 import ca.fangpei.cs.feelsbook.Emotions.Mood;
 
 /**
- * Created by User on 3/14/2017.
+ * PersonalListAdaper method is used to implement customized listView, so the date and emotion
+ * will always be displayed
  */
 
 public class PersonListAdapter extends ArrayAdapter<Mood> {
@@ -39,15 +40,11 @@ public class PersonListAdapter extends ArrayAdapter<Mood> {
         TextView msg;
     }
 
-    /**
-     * Default constructor for the PersonListAdapter
-     * @param context
-     * @param resource
-     * @param objects
-     */
+/*
+* defult constructor
+* */
     public PersonListAdapter(Context context, int resource, ArrayList<Mood> objects) {
         super(context, resource, objects);
-        //Log.i("cfp","construcotr");
         mContext = context;
         mResource = resource;
 
@@ -56,7 +53,7 @@ public class PersonListAdapter extends ArrayAdapter<Mood> {
     @NonNull
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        //get the persons information
+        //get the information of an item which is clicked
         String name = getItem(position).getName();
         date = getItem(position).getDate();
         String msg = getItem(position).getMessage();
@@ -64,7 +61,6 @@ public class PersonListAdapter extends ArrayAdapter<Mood> {
 
 
 
-        //create the view result for showing the animation
         final View result;
 
         //ViewHolder object
@@ -84,8 +80,7 @@ public class PersonListAdapter extends ArrayAdapter<Mood> {
             convertView.setTag(holder);
         }
         else{
-            holder = (ViewHolder) convertView.getTag();
-            //result = convertView;
+            holder = (ViewHolder) convertView.getTag();;
         }
 
        holder.date.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +101,6 @@ public class PersonListAdapter extends ArrayAdapter<Mood> {
         holder.name.setText(name);
         holder.date.setText(pattern.format(date));
         holder.msg.setText(msg);
-        //Log.i("fangpei", date.toString());
 
         return convertView;
     }

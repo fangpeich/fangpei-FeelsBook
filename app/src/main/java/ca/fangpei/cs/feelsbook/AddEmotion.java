@@ -20,7 +20,14 @@ import ca.fangpei.cs.feelsbook.Emotions.Love;
 import ca.fangpei.cs.feelsbook.Emotions.Mood;
 import ca.fangpei.cs.feelsbook.Emotions.Sadness;
 import ca.fangpei.cs.feelsbook.Emotions.Surprise;
-
+/*
+*
+* AddEmotion class is responsible for set subscription about current feeling
+*
+*
+*
+*
+* */
 public class AddEmotion extends Activity {
 
 
@@ -40,24 +47,27 @@ public class AddEmotion extends Activity {
         textView = (TextView) findViewById(R.id.count);
         bodyText = (EditText) findViewById(R.id.body);
 
+        //read the newest Mood ArraList from local file stored by json
         emotions = FileEditor.loadFromFile(AddEmotion.this, FeelsBook.FILENAME,emotions);
+
+        // Emotion is a Mood object transfered by the FeelsBook Class
         final Mood emotion = (Mood) getIntent().getSerializableExtra("ca.ualberta.emotion.key");
 
-
+        //First, for each emotion we need to show how many time the feeling has been recorded
         showWelcome(emotion,textView,AddEmotion.this);
 
 
-
+        // The situation that user click the cancel button, simple back to FeelsBook
         Button cancelButton = (Button) findViewById(R.id.save_without_comment);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                emotions.add(emotion);
                 FileEditor.saveInFile(AddEmotion.this, FeelsBook.FILENAME,emotions);
                 finish();
             }
         });
 
+        //The situation that user click save button, at this time we need to set messesge
         Button saveButton = (Button) findViewById(R.id.save);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +83,8 @@ public class AddEmotion extends Activity {
 
     }
 
+    // method showWelcome identify which type the transfered obj is, then get corresponding count
+    // and display it
     private void showWelcome(Mood emotion, TextView textView, Context context)
     {
         int count;
@@ -126,9 +138,11 @@ public class AddEmotion extends Activity {
         }
     }
 
+    // addEmotion method is called when used input message, it will set the message to the transfered obj
     private void addEmotion(EditText bodyText, String filename, Mood emotion, ArrayList<Mood> moods, Context context ) {
 
         String text ;
+        int idx;
         if (bodyText.getText().length() > 100) {
             try {
                 throw new SubscriptionTooLongException();
@@ -149,9 +163,9 @@ public class AddEmotion extends Activity {
             switch (emotion.getEmotion_id()) {
                 case 1:
                     try {
-                        emotion.setMessage(text);
-                        emotion.setDate(new Date());
-                        moods.add(emotion);
+                        idx = moods.indexOf(emotion);
+                        moods.get(idx).setMessage(text);
+                        moods.get(idx).setDate(new Date());
                         FileEditor.saveInFile(context, filename, moods);
                     } catch (SubscriptionTooLongException e) {
                         e.printStackTrace();
@@ -161,9 +175,9 @@ public class AddEmotion extends Activity {
                 case 2:
 
                     try {
-                        emotion.setMessage(text);
-                        emotion.setDate(new Date());
-                        moods.add(emotion);
+                        idx = moods.indexOf(emotion);
+                        moods.get(idx).setMessage(text);
+                        moods.get(idx).setDate(new Date());
                         FileEditor.saveInFile(context, filename, moods);
                     } catch (SubscriptionTooLongException e) {
                         e.printStackTrace();
@@ -173,14 +187,10 @@ public class AddEmotion extends Activity {
                 case 4:
 
                     try {
-                        emotion.setMessage(text);
-                        emotion.setDate(new Date());
-                        moods.add(emotion);
+                        idx = moods.indexOf(emotion);
+                        moods.get(idx).setMessage(text);
+                        moods.get(idx).setDate(new Date());
 
-                        Anger anger = (Anger) emotion;
-                        // anger.addCount(context);
-
-                        // adapter.notifyDataSetChanged();
                         FileEditor.saveInFile(context, filename, moods);
                     } catch (SubscriptionTooLongException e) {
                         e.printStackTrace();
@@ -190,12 +200,9 @@ public class AddEmotion extends Activity {
                 case 3:
 
                     try {
-                        emotion.setMessage(text);
-                        emotion.setDate(new Date());
-                        moods.add(emotion);
-
-                        Surprise surprise = (Surprise) emotion;
-                        // surprise.addCount(context);
+                        idx = moods.indexOf(emotion);
+                        moods.get(idx).setMessage(text);
+                        moods.get(idx).setDate(new Date());
 
                         // adapter.notifyDataSetChanged();
                         FileEditor.saveInFile(context, filename, moods);
@@ -207,12 +214,9 @@ public class AddEmotion extends Activity {
                 case 5:
 
                     try {
-                        emotion.setMessage(text);
-                        emotion.setDate(new Date());
-                        moods.add(emotion);
-
-                        Sadness sadness = (Sadness) emotion;
-                        //sadness.addCount(context);
+                        idx = moods.indexOf(emotion);
+                        moods.get(idx).setMessage(text);
+                        moods.get(idx).setDate(new Date());
 
                         // adapter.notifyDataSetChanged();
                         FileEditor.saveInFile(context, filename, moods);
@@ -224,12 +228,9 @@ public class AddEmotion extends Activity {
                 case 6:
 
                     try {
-                        emotion.setMessage(text);
-                        emotion.setDate(new Date());
-                        moods.add(emotion);
-
-                        Fear fear = (Fear) emotion;
-                        //fear.addCount(context);
+                        idx = moods.indexOf(emotion);
+                        moods.get(idx).setMessage(text);
+                        moods.get(idx).setDate(new Date());
 
                         // adapter.notifyDataSetChanged();
                         FileEditor.saveInFile(context, filename, moods);
@@ -243,4 +244,5 @@ public class AddEmotion extends Activity {
             finish();
         }
     }
+
 }
