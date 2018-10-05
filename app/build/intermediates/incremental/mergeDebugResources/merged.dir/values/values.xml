@@ -643,7 +643,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with <ns1:g example="Mail" id="application_name">%s</ns1:g></string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <string name="app_name">FeelsBook</string>
+    <string name="app_name">fangpei-FeelsBook</string>
     <string name="clear">Clear</string>
     <string name="save">Submit</string>
     <string name="search_menu_title">Search</string>
