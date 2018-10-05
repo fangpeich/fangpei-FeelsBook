@@ -72,9 +72,9 @@ public class FeelsBook extends Activity {
                 joy.addCount(FeelsBook.this);
                 joy.setDate(new Date());
 
-                emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+/*                emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
                 emotions.add(joy);
-                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);*/
 
 
 
@@ -96,10 +96,10 @@ public class FeelsBook extends Activity {
 
                 surprise.addCount(FeelsBook.this);
                 surprise.setDate(new Date());
-
+/*
                 emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
                 emotions.add(surprise);
-                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);*/
 
 
                 Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
@@ -120,9 +120,9 @@ public class FeelsBook extends Activity {
                 love.addCount(FeelsBook.this);
                 love.setDate(new Date());
 
-                emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+              /*  emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
                 emotions.add(love);
-                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);*/
 
 
                 Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
@@ -145,9 +145,9 @@ public class FeelsBook extends Activity {
                 anger.getCount();
                 anger.setDate(new Date());
 
-                emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+     /*           emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
                 emotions.add(anger);
-                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);*/
 
 
                 Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
@@ -169,9 +169,9 @@ public class FeelsBook extends Activity {
                 sadness.addCount(FeelsBook.this);
                 sadness.setDate(new Date());
 
-                emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+         /*       emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
                 emotions.add(sadness);
-                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+                FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);*/
 
 
                 Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
@@ -193,9 +193,9 @@ public class FeelsBook extends Activity {
                 fear.addCount(FeelsBook.this);
                 fear.setDate(new Date());
 
-                emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
+          /*      emotions=FileEditor.loadFromFile(FeelsBook.this, FILENAME,emotions);
                emotions.add(fear);
-               FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);
+               FileEditor.saveInFile(FeelsBook.this, FILENAME, emotions);*/
 
                 Intent intent = new Intent(FeelsBook.this, AddEmotion.class);
                 Bundle bundle = new Bundle();

@@ -52,6 +52,8 @@ public class AddEmotion extends Activity {
 
         // Emotion is a Mood object transfered by the FeelsBook Class
         final Mood emotion = (Mood) getIntent().getSerializableExtra("ca.ualberta.emotion.key");
+        emotions.add(emotion);
+        FileEditor.saveInFile(AddEmotion.this,FeelsBook.FILENAME,emotions);
 
         //First, for each emotion we need to show how many time the feeling has been recorded
         showWelcome(emotion,textView,AddEmotion.this);
