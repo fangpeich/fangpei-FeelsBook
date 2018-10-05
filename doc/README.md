@@ -6,3 +6,4 @@
 * Vipul Shah, Need to return the datepicker dialog value in android, https://stackoverflow.com/questions/21988336/need-to-return-the-datepicker-dialog-value-in-android, answered Feb 24 '14 at 12:55, retrieved 2018-9-30
 * Juboraj Sarker, Time Picker Dialog Sample in Android Studio (08 January-2017), https://www.youtube.com/watch?v=pBODTNkncdo&t=750s, Jan 11, 2017, retrieved 2018-9-30
 * Android Developers, Dialogs, https://developer.android.com/guide/topics/ui/dialogs, September 27, 2018, retrieved 2018-9-30
+* Kim, https://stackoverflow.com/questions/8180430/how-to-override-equals-method-in-java, answered Nov 18 '11 at 10:25, retrieved 2018-10-5
